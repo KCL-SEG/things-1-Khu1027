@@ -1,8 +1,7 @@
 from django.db import models
-from django.db.models import Model
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
-class Thing(Model):
+class Thing(models.Model):
     name = models.TextField(
         unique=True,
         blank=False,
@@ -16,7 +15,7 @@ class Thing(Model):
     quantity = models.IntegerField(
         unique=False,
         validators=[
-            MaxLengthValidator(100),
-            MinLengthValidator(0),
+            MaxValueValidator(100),
+            MinValueValidator(0),
         ]
     )
